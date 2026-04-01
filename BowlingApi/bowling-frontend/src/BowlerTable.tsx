@@ -1,5 +1,9 @@
+// BowlerTable.tsx
+// Fetches bowler data from the API and renders it in a table
+
 import { useState, useEffect } from 'react';
 
+// TypeScript interface defining the shape of each bowler object from the API
 interface Bowler {
   bowlerFirstName: string;
   bowlerMiddleInit: string;
@@ -13,8 +17,10 @@ interface Bowler {
 }
 
 function BowlerTable() {
+  // State to hold the array of bowlers fetched from the API
   const [bowlers, setBowlers] = useState<Bowler[]>([]);
 
+  // Fetch bowler data once when the component mounts
   useEffect(() => {
     fetch('http://localhost:5256/api/bowlers')
       .then((res) => res.json())
@@ -23,7 +29,7 @@ function BowlerTable() {
   }, []);
 
   return (
-    <table border={1}>
+    <table className="bowler-table">
       <thead>
         <tr>
           <th>Name</th>
@@ -36,6 +42,7 @@ function BowlerTable() {
         </tr>
       </thead>
       <tbody>
+        {/* Map over each bowler and render a table row */}
         {bowlers.map((b, i) => (
           <tr key={i}>
             <td>
