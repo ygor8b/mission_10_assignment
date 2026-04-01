@@ -10,7 +10,7 @@ builder.Services.AddDbContext<BowlingContext>(options =>
 
 builder.Services.AddCors(options =>
     options.AddPolicy("AllowReact", p =>
-        p.WithOrigins("http://localhost:3000")
+        p.WithOrigins("http://localhost:5173")
           .AllowAnyMethod()
           .AllowAnyHeader()));
 
